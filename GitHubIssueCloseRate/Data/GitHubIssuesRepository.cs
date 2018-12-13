@@ -30,7 +30,7 @@ namespace GitHubIssueCloseRate.Data {
         public async Task<IList<GitHubIssueModel>> List()
         {
             var request = Request(Method.GET);
-            request.Resource = "/issues?per_page=100&state=closed&sort=closed_at";
+            request.Resource = "/issues?per_page=100&sort=closed_at";
             var response = await client.ExecuteTaskAsync<List<GitHubIssueModel>>(request);
             return response.Data;
         }

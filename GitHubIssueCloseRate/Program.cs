@@ -21,18 +21,13 @@ namespace GitHubIssueCloseRate {
                 .BuildServiceProvider();
 
             //configure console logging
-            serviceProvider
-                .GetService<ILoggerFactory>()
-                .AddConsole(LogLevel.Debug);
-
-            var logger = serviceProvider.GetService<ILoggerFactory>().CreateLogger<Program>();
-            logger.LogDebug("Starting application");
+            Console.WriteLine("Starting application");
 
             //do the actual work here
             var gitHubIssueService = serviceProvider.GetService<IGitHubIssueService>();
             gitHubIssueService.Report().Wait();
 
-            logger.LogDebug("All done!");
+            Console.WriteLine("All done!");
             Console.ReadLine();
         }
     }
